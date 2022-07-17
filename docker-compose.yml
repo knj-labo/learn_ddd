@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   backend:
+    container_name: backend
     build:
       context: .
       dockerfile: ./.docker/backend/Dockerfile
@@ -10,10 +11,13 @@ services:
       - type: bind
         source: ./backend
         target: /api
+    depends_on:
+      - postgres
     ports:
       - "3000:3000"
 
   postgres:
+    container_name: postgres
     image: postgres:13
     ports:
       - "5434:5432"
