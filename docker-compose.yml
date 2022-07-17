@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./.docker/backend/Dockerfile
+    tty: true
+    volumes:
+      - type: bind
+        source: ./backend
+        target: /api
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:13
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nest
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - default
+
+networks:
+  default:
+volumes:
+  postgres:
