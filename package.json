@@ -10,9 +10,19 @@
     "format:fix": "npm run format:backend -- --write --cache && npm run format:frontend -- --write --cache ",
     "format": "npm run format:backend && npm run format:frontend",
     "format:backend": "prettier --check --ignore-path server/.gitignore backend/**/*.{js,ts}",
-    "format:frontend": "prettier --check --ignore-path client/.gitignore frontend/**/*.{ts,tsx,css}"
+    "format:frontend": "prettier --check --ignore-path client/.gitignore frontend/**/*.{ts,tsx,css}",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "npx eslint . --fix",
+      "npx prettier --write ."
+    ]
   },
   "devDependencies": {
+    "husky": "8.0.1",
+    "lint-staged": "13.0.3",
     "prettier": "2.7.1"
   }
 }
