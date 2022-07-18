@@ -13,7 +13,13 @@
   - Docker
   - Prettier
   - ESLint
+  - npm workspace
 
+## 使用
+```shell
+# フロントエンドとバックエンドのコードスタイルを確認する
+$ npm run format
+```
 ## アーキテクチャ
 ![img](./docs/architecture.png)
 
