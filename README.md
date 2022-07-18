@@ -11,12 +11,15 @@
 
 - その他
   - Docker
-  - Prettier
-  - ESLint
+  - husky/lint-staged
+  - prettier/eslint
   - npm workspace
 
 ## 使用
 ```shell
+# husky の準備
+$ npm run prepare
+
 # フロントエンドとバックエンドのコードスタイルを確認する
 $ npm run format
 ```
