@@ -1,4 +1,18 @@
 {
   "private": true,
-  "workspaces": ["backend", "frontend"]
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "backend": "npm workspace backend",
+    "frontend": "npm workspace frontend",
+    "format:fix": "npm run format:backend -- --write --cache && npm run format:frontend -- --write --cache ",
+    "format": "npm run format:backend && npm run format:frontend",
+    "format:backend": "prettier --check --ignore-path server/.gitignore backend/**/*.{js,ts}",
+    "format:frontend": "prettier --check --ignore-path client/.gitignore frontend/**/*.{ts,tsx,css}"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
+  }
 }
