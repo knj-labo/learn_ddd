@@ -10,8 +10,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+// @see https://www.prisma.io/docs/concepts/components/prisma-schema
+// @see https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference
+
+model Member {
+  id                 Int              @id @default(autoincrement())
+  name               String           @db.VarChar(255)
+  email              String           @unique @db.VarChar(255)
+  enrollmentStatusId Int              @map("enrollment_status_id")
+  enrollmentStatus   EnrollmentStatus @relation(fields: [enrollmentStatusId], references: [id])
+  createdAt          DateTime         @default(now()) @map("created_at")
+  updatedAt          DateTime         @updatedAt @map("updated_at")
+
+  @@map(name: "members")
+}
+
+model EnrollmentStatus {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  name      String   @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  Member Member[]
+  @@map(name: "enrollment_statuses")
 }
