@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/ja/component-diagram
+
+title アーキテクチャ
+header created by jp-knj
+
+component Presentation層 {
+  component Presenter
+  note right of Presenter :・ エンドポイント定義 \n    パラメータやリクエストに含まれるバリデーションを行う \n    Usecase層で定義された値に変換してUsecase層に渡す
+}
+component Infrastructure層 {
+  component Repository
+  note right of Repository:・ リポジトリ \n    ドメインオブジェクトの永続化や取得
+}
+component Usecase層 {
+  component Usecase
+  note right of Usecase:・ ユースケース \n    ドメインオブジェクトを操作する処理を定義
+}
+component Domain層 {
+  component Entity
+  component ValueObject
+  component Repository as DomainRepository
+}
+  note right of Domain層 : ・ リポジトリのインターフェース \n・  依存性の逆転をするために定義 \n・ ドメインオブジェクト (Entity, ValueObject) の制約やルールを表現したロジックを持つ
+Presenter -- Usecase
+Repository -- Usecase
+Repository -- DomainRepository
+Usecase -- Entity
+Entity -- ValueObject
+
+@enduml
