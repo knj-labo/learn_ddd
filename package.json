@@ -5,8 +5,8 @@
     "frontend"
   ],
   "scripts": {
-    "backend": "npm workspace backend",
-    "frontend": "npm workspace frontend",
+    "backend": "npm -w backend",
+    "frontend": "npm -w frontend",
     "format:prisma": "npm run format -w backend",
     "format:fix": "npm run format:backend -- --write --cache && npm run format:frontend -- --write --cache ",
     "format": "npm run format:backend && npm run format:frontend",
