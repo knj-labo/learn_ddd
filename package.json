@@ -16,7 +16,11 @@
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": [
+    "backend/*.{ts,jsx,tsx}": [
+      "npx eslint . --fix",
+      "npx prettier --write ."
+    ],
+    "frontend/*.{ts,jsx,tsx}": [
       "npx eslint . --fix",
       "npx prettier --write ."
     ]
