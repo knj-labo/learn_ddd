@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/ja/component-diagram
+
+title オブジェクト図
+header created by jp-knj
+
+skinparam componentStyle rectangle
+component "チーム 111" as team1 {
+    component "ペア a" as pair1 {
+        component "参加者\n名前:テスト太郎\n在籍ステータス:在籍中" as member1 {
+        }
+        component "参加者\n名前:テスト花子\n在籍ステータス:在籍中" as member2 {
+        }
+    }
+
+    component "ペア b" as pair2 {
+        component "参加者\n名前:テスト次郎\n在籍ステータス:在籍中" as member3 {
+        }
+        component "参加者\n名前:テスト幸子\n在籍ステータス:在籍中" as member4 {
+        }
+    }
+    member1 -> task1
+    member2 -> task2
+    member3 -> task3
+    member4 -> task4
+}
+component "タスク" as task {
+    component "タスク\n名前:テスト花子\nステータス:未完了" as task1 {
+    }
+    component "タスク\n名前:テスト太郎\nステータス:未完了" as task2 {
+    }
+    component "タスク\n名前:テスト次郎\nステータス:完了" as task3 {
+    }
+    component "タスク\n名前:テスト幸子\nステータス:レビュー待ち" as task4 {
+    }
+}
+
+component "参加者\n名前:テスト三郎\n在籍ステータス:休会中" as member5 {
+}
+component "参加者\n名前:テストヨシ子\n在籍ステータス:退会" as member6 {
+}
+
+@enduml
