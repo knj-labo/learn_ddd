@@ -21,6 +21,10 @@
     "@typescript-eslint"
   ],
   "rules": {
+    "no-underscore-dangle": "off",
+    "import/no-unresolved": "off",
+    "import/no-default-export": "error",
+    "import/prefer-default-export": "off",
     "import/order": [
       "error",
       {
@@ -37,6 +41,11 @@
           {
             "pattern": "@utils/**",
             "group": "parent",
+            "position": "before"
+          },
+          {
+            "pattern": "@domain/**",
+            "group": "sibling",
             "position": "before"
           }
         ],
