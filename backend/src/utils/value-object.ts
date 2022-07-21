@@ -2,14 +2,14 @@
  * @see https://github.com/HenrikGr/ddd-typescript/blob/master/src/core/domain/ValueObject.ts
  */
 
-interface IValueObjectProps {
-  [index: string]: string
+interface ValueObjectProps {
+  [index: string]: any
 }
 
 /**
  * @class 値オブジェクトを実装した抽象クラス
  */
-export abstract class ValueObject<T extends IValueObjectProps> {
+export abstract class ValueObject<T extends ValueObjectProps> {
   /**
    * @desc 値オブジェクトの props は　this.props に格納
    * サブクラスで getter を定義することで参照できるようにする
