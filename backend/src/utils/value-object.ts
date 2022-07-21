@@ -1,31 +1,23 @@
 /**
- * @prettier
- * @copyright (c) 2021 - present, HGC-AB
- * @licence This source code is licensed under the MIT license described
- * and found in the LICENSE file in the root directory of this source tree.
  * @see https://github.com/HenrikGr/ddd-typescript/blob/master/src/core/domain/ValueObject.ts
  */
 
-/**
- * Value object properties interface
- */
 interface IValueObjectProps {
-  [index: string]: any
+  [index: string]: string
 }
 
 /**
- * Abstract class implements value objects
- * @class
+ * @class 値オブジェクトを実装した抽象クラス
  */
 export abstract class ValueObject<T extends IValueObjectProps> {
   /**
-   * The props of the value object are stored in this.props
-   * to leave to the subclass to decide getters
+   * @desc 値オブジェクトの props は　this.props に格納
+   * サブクラスで getter を定義することで参照できるようにする
    */
   public props: T
 
   /**
-   * Creates a new ValueObject instance
+   * @desc 値オブジェクトの新規インスタンスの作成
    * @param props
    */
   protected constructor(props: T) {
@@ -35,18 +27,18 @@ export abstract class ValueObject<T extends IValueObjectProps> {
   }
 
   /**
-   * Equality comparator for value objects
-   * @param vo
+   * @desc 値オブジェクトの比較
+   * @param value
    */
-  public equals(vo?: ValueObject<T>): boolean {
-    if (vo === null || vo === undefined) {
+  public equals(value?: ValueObject<T>): boolean {
+    if (value === null || value === undefined) {
       return false
     }
 
-    if (vo.props === undefined) {
+    if (value.props === undefined) {
       return false
     }
 
-    return JSON.stringify(this.props) === JSON.stringify(vo.props)
+    return JSON.stringify(this.props) === JSON.stringify(value.props)
   }
 }
