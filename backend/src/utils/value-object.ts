@@ -3,7 +3,7 @@
  */
 
 interface ValueObjectProps {
-  [index: string]: any
+  [index: string]: any;
 }
 
 /**
@@ -11,10 +11,10 @@ interface ValueObjectProps {
  */
 export abstract class ValueObject<T extends ValueObjectProps> {
   /**
-   * @desc 値オブジェクトの props は　this.props に格納
+   * @desc 値オブジェクトの props は this.props に格納
    * サブクラスで getter を定義することで参照できるようにする
    */
-  public props: T
+  public props: T;
 
   /**
    * @desc 値オブジェクトの新規インスタンスの作成
@@ -23,7 +23,7 @@ export abstract class ValueObject<T extends ValueObjectProps> {
   protected constructor(props: T) {
     this.props = {
       ...props,
-    }
+    };
   }
 
   /**
@@ -32,13 +32,13 @@ export abstract class ValueObject<T extends ValueObjectProps> {
    */
   public equals(value?: ValueObject<T>): boolean {
     if (value === null || value === undefined) {
-      return false
+      return false;
     }
 
     if (value.props === undefined) {
-      return false
+      return false;
     }
 
-    return JSON.stringify(this.props) === JSON.stringify(value.props)
+    return JSON.stringify(this.props) === JSON.stringify(value.props);
   }
 }

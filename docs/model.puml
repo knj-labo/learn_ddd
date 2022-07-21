@@ -3,7 +3,8 @@
 
 title モデル
 header created by jp-knj
-rectangle 参加者集約 {
+
+package 参加者集約 {
   entity Member {
     id
     ---
@@ -15,11 +16,11 @@ status
   ・ status の区分は 「在籍中、休会中、退会」
   ・ status の初期値は 在籍中
   ・ status 在籍中である場合、いずれかのペアに所属している。
-  ・ name は数字でかつ、3文字以下である必要がある
+  ・ name は空文字は許されない。
   end note
 }
 
-rectangle ペア集約 {
+package ペア集約 {
   entity Pair {
     id
     ---
@@ -30,7 +31,7 @@ rectangle ペア集約 {
   end note
 }
 
-rectangle ペア移動集約 {
+package ペア移動集約 {
   entity MovePair {
       id
       ---
@@ -43,7 +44,7 @@ rectangle ペア移動集約 {
     end note
 }
 
-rectangle チーム集約 {
+package チーム集約 {
   entity Team {
     id
     ---
@@ -57,7 +58,7 @@ rectangle チーム集約 {
 
 }
 
-rectangle チーム移動集約 {
+package チーム移動集約 {
   entity MoveTeam {
       id
       ---
@@ -69,7 +70,7 @@ rectangle チーム移動集約 {
     end note
 }
 
-rectangle 課題集約 {
+package 課題集約 {
   entity Task {
     id
     ---
@@ -77,6 +78,14 @@ rectangle 課題集約 {
     status
     member_id
   }
+
+  entity TaskAssignee {
+      id
+      ---
+      task_id
+      member_id
+    }
+
   note right of Task
   ・ status の区分は 「未着手、レビュー待ち、完了」
   ・ member_id の場合、status を更新できる
@@ -84,9 +93,10 @@ rectangle 課題集約 {
   end note
 }
 
-Member --{ Pair
-Pair --{ Team
+Pair ---{ Member
+Team --{ Pair
 Pair --{ MovePair
 Team --{ MoveTeam
-Member --{ Task
+Member --{ TaskAssignee
+Task --{ TaskAssignee
 @enduml

@@ -1,5 +1,4 @@
-import { UniqueEntityID } from '@utils/unique-entity-id'
-
+import { UniqueEntityID } from '@utils/unique-entity-id';
 
 /**
  * @see //https://github.com/HenrikGr/ddd-typescript/blob/master/src/core/domain/Entity.ts
@@ -9,9 +8,7 @@ import { UniqueEntityID } from '@utils/unique-entity-id'
  * @desc エンティティの比較
  * @param v
  */
-const isEntity = (v: any): v is Entity<any> => {
-  return v instanceof Entity
-}
+const isEntity = (v: any): v is Entity<any> => v instanceof Entity;
 
 /**
  * @class エンティティクラスを実装
@@ -25,25 +22,24 @@ const isEntity = (v: any): v is Entity<any> => {
  * @param T 値オブジェクト
  */
 export abstract class Entity<T> {
-
   /**
    * @desc インスタンス化された後に変更できないように読み取り専用
    */
-  protected readonly _id: UniqueEntityID
+  protected readonly _id: UniqueEntityID;
 
   /**
-   * @desc 値オブジェクトの props は　this.props に格納
+   * @desc 値オブジェクトの props は this.props に格納
    * サブクラスで getter を定義することで参照できるようにする
    */
-  public readonly props: T
+  public readonly props: T;
 
   /**
    * @desc エンティティの新規インスタンスの作成
    * @param 値オブジェクト, id
    */
   constructor(props: T, id?: UniqueEntityID) {
-    this._id = id ? id : new UniqueEntityID()
-    this.props = props
+    this._id = id || new UniqueEntityID();
+    this.props = props;
   }
 
   /**
@@ -51,17 +47,17 @@ export abstract class Entity<T> {
    */
   public equals(object?: Entity<T>): boolean {
     if (object == null) {
-      return false
+      return false;
     }
 
     if (this === object) {
-      return true
+      return true;
     }
 
     if (!isEntity(object)) {
-      return false
+      return false;
     }
 
-    return this._id.equals(object._id)
+    return this._id.equals(object._id);
   }
 }
