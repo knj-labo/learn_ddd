@@ -9,7 +9,7 @@ export interface MemberEmailProps {
  * @desc MemberEmailオブジェクトのドメインロジックを実装
  * ユーザーのメールアドレスの検証をカプセル化
  */
-export class UserEmail extends ValueObject<MemberEmailProps> {
+export class MemberEmail extends ValueObject<MemberEmailProps> {
 
   /**
    * メンバーのメールアドレスを表す値オブジェクトの新規インスタンスを作成
