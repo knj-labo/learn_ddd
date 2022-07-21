@@ -1,4 +1,4 @@
-import { ValueObject } from '@utils/value-object';
+import { ValueObject } from '../../utils/value-object';
 
 interface MemberNameProps {
   name: string;
@@ -16,10 +16,7 @@ export class MemberName extends ValueObject<MemberNameProps> {
     super(props);
   }
 
-  /**
-   * @desc メンバー名を取得
-   */
-  get value(): string {
+  public get name(): string {
     return this.props.name;
   }
 
@@ -27,12 +24,12 @@ export class MemberName extends ValueObject<MemberNameProps> {
    * @desc 空文字ではないかを判定
    */
   private static isValid(name: string): boolean {
-    return name.trim() === '';
+    return name.trim() !== '';
   }
 
   public static create(name: string): MemberName {
     if (!this.isValid(name)) {
-      throw new Error(`Invalid member name: ${name}`);
+      throw new Error('名前を入力してください。');
     }
     return new MemberName({ name });
   }
