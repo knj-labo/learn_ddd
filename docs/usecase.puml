@@ -6,38 +6,23 @@ header created by jp-knj
 
 left to right direction
 actor "参加者" as Actor
-rectangle 認証 {
+rectangle 集団タスク管理アプリ {
   usecase "ログイン" as AuthenticationUC1
-  usecase "登録" as AuthenticationUC2
-
   Actor --> AuthenticationUC1
-  Actor --> AuthenticationUC2
-  AuthenticationUC2 --> AuthenticationUC1
-}
 
-rectangle 課題 {
   usecase "全てのタスクを一覧する" as TaskUC1
+  Actor --> TaskUC1
+
   usecase "タスクのステータスを更新する" as TaskUC2
+  Actor --> TaskUC2
 
-  AuthenticationUC1 --> TaskUC1
-  AuthenticationUC1 --> TaskUC2
-}
-
-rectangle 参加者 {
   usecase "参加者自身のステータスを更新する" as MemberUC1
+  Actor --> MemberUC1
 
-  AuthenticationUC1 --> MemberUC1
-}
-
-rectangle ペア {
   usecase "別のペアへ移動する" as PairUC1
+  Actor --> PairUC1
 
-  AuthenticationUC1 --> PairUC1
-}
-
-rectangle チーム {
   usecase "他のチームへ移動する" as TeamUC1
-
-  AuthenticationUC1 --> TeamUC1
+  Actor --> TeamUC1
 }
 @enduml
