@@ -36,6 +36,10 @@ $ npm run format
 
 ![img](./docs/usecase.png)
 
+## オブジェクト
+
+![img](./docs/object.png)
+
 ## モデル
 
 ![img](./docs/model.png)
