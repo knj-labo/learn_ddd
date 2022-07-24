@@ -1,11 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { MemberService } from '../../domain/member/member-service';
+import { AllMembersQueryService } from '../../infrastructure/database/all-members-repository';
 
 @Controller('api/v1/members')
 export class MemberController {
-  constructor(private readonly memberService: MemberService) {}
+  constructor(private readonly memberService: AllMembersQueryService) {}
+
   @Get()
-  async getAllMembers(): Promise<any[]> {
+  getAllMembers() {
     return this.memberService.getAllMembers();
   }
 }

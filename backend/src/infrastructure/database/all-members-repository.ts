@@ -5,7 +5,7 @@ import { PrismaService } from 'src/database/prisma-service';
 export class AllMembersQueryService {
   constructor(private readonly prismaClient: PrismaService) {}
 
-  public async findAll(): Promise<any> {
-    const allMember = await this.prismaClient.member.findMany();
+  public async getAllMembers(): Promise<any> {
+    return await this.prismaClient.member.findMany();
   }
 }
