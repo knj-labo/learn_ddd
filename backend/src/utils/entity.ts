@@ -1,4 +1,4 @@
-import { UniqueEntityID } from '@utils/unique-entity-id';
+import { UniqueEntityID } from './unique-entity-id';
 
 /**
  * @see //https://github.com/HenrikGr/ddd-typescript/blob/master/src/core/domain/Entity.ts
