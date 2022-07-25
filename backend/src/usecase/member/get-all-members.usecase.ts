@@ -1,15 +1,10 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { AllMembersDTO} from './query-service-interface/all-members';
 import { GetAllMembersRepository } from "../../infrastructure/database/get-all-members.repository";
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class GetAllMembersUsecase {
-  public constructor(
-    @Inject('AllMembersQueryService')
-    private readonly getAllMemberQueryService: GetAllMembersRepository,
-  ) {}
-
-  public async execute(): Promise<AllMembersDTO[]> {
+  constructor(private readonly getAllMemberQueryService: GetAllMembersRepository) {}
+  public async execute(): Promise<any> {
     try {
       return await this.getAllMemberQueryService.getAll();
     } catch (error) {
