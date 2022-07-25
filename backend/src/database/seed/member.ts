@@ -2,8 +2,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export const member = async () => {
+  // const enrollmentStatus = await prisma.enrollmentStatus.findMany();
   await prisma.member.createMany({
-    data: Array(80)
+    data: Array(10)
       .fill(0)
       .map((_, index) => ({
         id: index + 1,
