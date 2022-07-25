@@ -1,17 +1,24 @@
 import { GetAllMembersRepository } from "../../infrastructure/database/get-all-members.repository";
+
 import { Injectable } from '@nestjs/common';
 import { Member } from '../../domain/member/member';
+import { MemberDto } from "./member.dto";
 
 @Injectable()
 export class GetAllMembersUsecase {
   constructor(private readonly getAllMemberQueryService: GetAllMembersRepository) {}
   public async execute(): Promise<any> {
     try {
-      const members = await this.getAllMemberQueryService.getAll();
-      members.map(member => {
-        member.enrollmentStatus = member.enrollmentStatus.name;
+      const members: Member[] = await this.getAllMemberQueryService.getAll();
+      return members.map(member => {
+        return new MemberDto({
+          id: member.id,
+          name: member.name,
+          email: member.email,
+          enrollmentStatus: member.enrollmentStatus.name,
+          }
+        )
       })
-      return members;
     } catch (error) {
       throw error;
     }
