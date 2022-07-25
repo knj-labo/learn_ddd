@@ -1,8 +1,7 @@
-import { UniqueEntityID } from "../../utils/unique-entity-id";
 import { MemberName } from "../../domain/member/member-name";
 import { MemberEmail } from "../../domain/member/member-email";
 
-export class MemberDto {
+export class MemberDTO {
   public readonly name: MemberName
   public readonly email: MemberEmail
   public readonly enrollmentStatus: string

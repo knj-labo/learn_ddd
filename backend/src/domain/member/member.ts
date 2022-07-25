@@ -2,13 +2,12 @@ import { AggregateRoot } from '../../utils/aggregate-root';
 import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
 import type { MemberEmail } from './member-email';
-import type { EnrollmentStatus } from './member-enrollment-status';
 import type { MemberName } from './member-name';
 
 export interface MemberProps {
   name: MemberName;
   email: MemberEmail;
-  enrollmentStatus: EnrollmentStatus;
+  enrollmentStatus: string;
 }
 
 /**
@@ -23,7 +22,8 @@ export class Member extends AggregateRoot<MemberProps> {
    * @param {UniqueEntityID} id
    */
   private constructor(props: MemberProps, id: UniqueEntityID) {
-    super(props, id);
+    const { name, email, enrollmentStatus } = props;
+    super({ name, email, enrollmentStatus }, id);
   }
 
   /**
@@ -43,7 +43,7 @@ export class Member extends AggregateRoot<MemberProps> {
   /**
    * メンバーの在籍ステータスを取得
    */
-  public get enrollmentStatus(): EnrollmentStatus {
+  public get enrollmentStatus(): string{
     return this.props.enrollmentStatus;
   }
 
@@ -53,5 +53,18 @@ export class Member extends AggregateRoot<MemberProps> {
    */
   public static create(props: MemberProps, id?: UniqueEntityID) {
     return new Member({ ...props }, id);
+  }
+
+  /**
+   * @param {IUserProps} props
+   * @param {UniqueEntityID} id
+   */
+  public get() {
+    return {
+      id: this.id.toString(),
+      name: this.name,
+      email: this.email,
+      enrollmentStatus: this.enrollmentStatus,
+    }
   }
 }
