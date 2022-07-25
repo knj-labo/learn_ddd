@@ -3,11 +3,12 @@ import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
 import type { MemberEmail } from './member-email';
 import type { MemberName } from './member-name';
+import type { EnrollmentStatus } from './member-enrollment-status';
 
 export interface MemberProps {
   name: MemberName;
   email: MemberEmail;
-  enrollmentStatus: string;
+  enrollmentStatus: any;
 }
 
 /**
@@ -43,7 +44,7 @@ export class Member extends AggregateRoot<MemberProps> {
   /**
    * メンバーの在籍ステータスを取得
    */
-  public get enrollmentStatus(): string{
+  public get enrollmentStatus() {
     return this.props.enrollmentStatus;
   }
 
