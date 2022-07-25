@@ -12,7 +12,6 @@ export class GetAllMembersUsecase {
       const members: Member[] = await this.getAllMemberQueryService.getAll();
       return members.map(member => {
         return new MemberDto({
-          id: member.id,
           name: member.name,
           email: member.email,
           enrollmentStatus: member.enrollmentStatus.name,
