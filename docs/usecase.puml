@@ -10,6 +10,9 @@ rectangle 集団タスク管理アプリ {
   usecase "ログイン" as AuthenticationUC1
   Actor --> AuthenticationUC1
 
+  usecase "全ての参加者を一覧する" as AllUsersUC1
+  Actor --> AllUsersUC1
+
   usecase "全てのタスクを一覧する" as TaskUC1
   Actor --> TaskUC1
 

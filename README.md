@@ -26,6 +26,9 @@ $ npm run prepare
 
 # フロントエンドとバックエンドのコードスタイルを確認する
 $ npm run format
+
+# 開発環境を立ち上げる
+$ docker compose up
 ```
 
 ## アーキテクチャ

@@ -10,12 +10,12 @@ package 参加者集約 {
     ---
     name
     email
-status
+    enrollStatus
   }
   note right of Member
-  ・ status の区分は 「在籍中、休会中、退会」
-  ・ status の初期値は 在籍中
-  ・ status 在籍中である場合、いずれかのペアに所属している。
+  ・ enrollStatus の区分は 「在籍中、休会中、退会」
+  ・ enrollStatus の初期値は 在籍中
+  ・ enrollStatus 在籍中である場合、いずれかのペアに所属している。
   ・ name は空文字は許されない。
   end note
 }
