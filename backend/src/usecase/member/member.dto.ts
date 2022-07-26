@@ -1,7 +1,6 @@
 import { MemberName } from "../../domain/member/member-name";
 import { MemberEmail } from "../../domain/member/member-email";
-import { Member } from "../../domain/member/member";
-import { EnrollmentStatus } from "../../domain/member/member-enrollment-status";
+
 export class MemberDTO {
   public readonly name: MemberName
   public readonly email: MemberEmail
