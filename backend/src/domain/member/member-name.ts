@@ -1,4 +1,5 @@
 import { ValueObject } from '../../utils/value-object';
+import { DomainException } from '../../utils/domain-exception';
 
 interface MemberNameProps {
   name: string;
@@ -29,7 +30,7 @@ export class MemberName extends ValueObject<MemberNameProps> {
 
   public static create(name: string): MemberName {
     if (!this.isValid(name)) {
-      throw new Error('名前を入力してください。');
+      throw new DomainException('名前を入力してください。');
     }
     return new MemberName({ name });
   }

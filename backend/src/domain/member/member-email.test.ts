@@ -1,4 +1,5 @@
 import { MemberEmail } from './member-email';
+import { DomainException } from "../../utils/domain-exception";
 
 describe('参加者のメールアドレスを受け取った場合で', () => {
   it('適切な値だったとき、値オブジェクトを作成', () => {
@@ -13,6 +14,6 @@ describe('参加者のメールアドレスを受け取った場合で', () => {
     const ERROR_MESSAGE = 'メールアドレスが正しいフォーマットではありません。';
 
     const result = () => MemberEmail.create(TEST_EMAIL);
-    expect(() => result()).toThrow(new Error(ERROR_MESSAGE));
+    expect(() => result()).toThrow(new DomainException(ERROR_MESSAGE));
   });
 });

@@ -3,7 +3,6 @@ import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
 import type { MemberEmail } from './member-email';
 import type { MemberName } from './member-name';
-import type { EnrollmentStatus } from './member-enrollment-status';
 
 export interface MemberProps {
   name: MemberName;
