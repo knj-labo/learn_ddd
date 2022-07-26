@@ -1,9 +1,5 @@
 {
   "private": true,
-  "workspaces": [
-    "backend",
-    "frontend"
-  ],
   "scripts": {
     "backend": "npm -w backend",
     "frontend": "npm -w frontend",
@@ -17,7 +13,7 @@
   },
   "lint-staged": {
     "backend/*.{ts,jsx,tsx}": [
-      "npx eslint . --fix",
+      "npx eslint --ignore-path server/.gitignore backend/**/*.{ts} --fix",
       "npx prettier --write ."
     ],
     "frontend/*.{ts,jsx,tsx}": [
