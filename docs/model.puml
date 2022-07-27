@@ -74,22 +74,20 @@ package 課題集約 {
   entity Task {
     id
     ---
+    assigned_member_id
     title
-    status
-    member_id
+    content
+    progress_status
   }
 
-  entity TaskAssignee {
-      id
-      ---
-      task_id
-      member_id
-    }
-
   note right of Task
-  ・ status の区分は 「未着手、レビュー待ち、完了」
-  ・ member_id の場合、status を更新できる
-  ・ status が完了の場合、更新できない
+  ・ タスク担当者は必ず存在する
+  ・ progress_status の区分は 「未着手、レビュー待ち、完了」
+  ・ progress_status の初期値は 未着手
+  ・ progress_status は担当された参加者のみが変更できる
+  ・ progress_statusが完了の場合、変更できない
+  ・ title は空文字は許されない。
+  ・ content は空文字は許されない。
   end note
 }
 
@@ -97,6 +95,5 @@ Pair ---{ Member
 Team --{ Pair
 Pair --{ MovePair
 Team --{ MoveTeam
-Member --{ TaskAssignee
-Task --{ TaskAssignee
+Member --{ Task
 @enduml

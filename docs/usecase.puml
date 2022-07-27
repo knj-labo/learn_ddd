@@ -18,9 +18,13 @@ rectangle 集団タスク管理アプリ {
     Actor --> MemberUpdateEmailUseCase
   }
 
+  rectangle 課題 {
+    usecase "全ての担当した課題を一覧する" as TaskGetAllUseCase
+    Actor --> TaskGetAllUseCase
 
-  usecase "全てのタスクを一覧する" as TaskUC1
-  Actor --> TaskUC1
+    usecase "担当した課題の進捗ステータスを変更する" as TaskUpdateStatusUseCase
+    Actor --> TaskUpdateStatusUseCase
+  }
 
   usecase "タスクのステータスを更新する" as TaskUC2
   Actor --> TaskUC2
