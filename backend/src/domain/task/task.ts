@@ -60,6 +60,7 @@ export class Task extends AggregateRoot<TaskProps> {
    *
    */
   public changeProgressStatus () {
+    // TODO: check own task
     // TODO: validation(isDone)
     // TODO: change progress status
   }
