@@ -1,11 +1,12 @@
 import { Entity } from '../../utils/entity';
 import type { UniqueEntityID } from '../../utils/unique-entity-id';
+import { ValueObject } from "../../utils/value-object";
 
 /**
  * @class TaskIdエンティティ
  * @extends Entity
  */
-export class TaskId extends Entity<any> {
+export class Task extends ValueObject<any> {
   private constructor(id?: UniqueEntityID) {
     super(null, id);
   }

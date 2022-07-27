@@ -2,6 +2,7 @@ import { AggregateRoot } from '../../utils/aggregate-root';
 import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
 interface TaskProps {
+  assignedMemberId: string;
   title: string;
   content: string;
   progressStatus: 'untouched' | 'waiting' | 'done';
@@ -20,6 +21,10 @@ export class Task extends AggregateRoot<TaskProps> {
    */
   private constructor(props: TaskProps, id: UniqueEntityID) {
     super({ ...props }, id);
+  }
+
+  private get assignedMemberId(): string {
+    return this.props.assignedMemberId;
   }
 
   /**
@@ -49,7 +54,7 @@ export class Task extends AggregateRoot<TaskProps> {
    */
   public get task() {
     return {
-      id: this.id.toString(),
+      assignedMemberId: this.assignedMemberId,
       title: this.title,
       content: this.content,
       progressStatus: this.progressStatus,
