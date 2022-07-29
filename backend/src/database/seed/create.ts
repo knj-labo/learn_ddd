@@ -3,6 +3,7 @@ const prisma = new PrismaClient();
 import { member } from './member';
 import { enrollmentStatus } from './enrollment-status';
 import { task } from "./task";
+import { taskProgressStatus } from './task-progress-status';
 
 async function main() {
   await prisma.member.deleteMany();
