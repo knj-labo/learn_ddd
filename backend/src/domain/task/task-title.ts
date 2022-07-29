@@ -1,7 +1,7 @@
 import { ValueObject } from '../../utils/value-object';
 import { DomainException } from '../../utils/domain-exception';
 
-interface TaskTitleProps {
+export interface TaskTitleProps {
   title: string;
 }
 

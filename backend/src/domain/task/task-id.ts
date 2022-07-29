@@ -6,15 +6,15 @@ import { ValueObject } from "../../utils/value-object";
  * @class TaskIdエンティティ
  * @extends Entity
  */
-export class Task extends ValueObject<any> {
+export class TaskId extends ValueObject<any> {
   private constructor(id?: UniqueEntityID) {
-    super(null, id);
+    super(id);
   }
 
   /**
    * @desc 一意なエンティティIDオブジェクトを取得
    */
-  get id(): UniqueEntityID {
-    return this._id;
+  public get id(): UniqueEntityID {
+    return this.id;
   }
 }
