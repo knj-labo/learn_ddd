@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { MemberQueryService } from '../../infrastructure/database/member.query-service';
 
-import { UseCase } from './i.member.usecase';
-import { Member } from '../../domain/member/member';
+import type { Member } from '../../domain/member/member';
+import type { MemberQueryService } from '../../infrastructure/database/member.query-service';
+import type { UseCase } from './i.member.usecase';
 
 @Injectable()
 export class UpdateEnrollmentStatusUsecase implements UseCase<any, Member> {
@@ -24,6 +24,7 @@ export class UpdateEnrollmentStatusUsecase implements UseCase<any, Member> {
       throw error;
     }
   }
+
   public async execute(): Promise<any> {
     return await this.updateEnrollmentStatus(1, '2');
   }
