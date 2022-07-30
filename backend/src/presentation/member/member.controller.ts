@@ -7,6 +7,6 @@ export class MemberController {
 
   @Get('api/v1/members')
   getAll() {
-    return this.MembersUsecase.getAll();
+    return this.MembersUsecase.findAll();
   }
 }

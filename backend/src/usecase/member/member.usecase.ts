@@ -1,29 +1,42 @@
 import { Injectable } from '@nestjs/common';
-import { MembersRepository} from "../../infrastructure/database/members.repository";
-import { Member } from '../../domain/member/member';
 import { MemberDTO } from "./member.dto";
 import { MemberId } from "../../domain/member/member-id";
-import { MemberEmail } from "../../domain/member/member-email";
+import { MemberQueryService } from "../../infrastructure/database/member.query-service";
+import { BadRequestError } from "../../utils/bad-request-error";
+import { ForbiddenError } from "../../utils/forbidden-error";
+import { InternalServerError } from "../../utils/internal-server-error";
 
 @Injectable()
 export class MembersUsecase {
-  constructor(private readonly memberRepository: MembersRepository) {}
+  constructor(private readonly memberQueryService : MemberQueryService) {}
 
   /**
    * 参加者一覧を取得する
    */
-  public async getAll(): Promise<MemberDTO[]> {
+  public async findAll(): Promise<MemberDTO[]> {
     try {
-      const members: Member[] = await this.memberRepository.getAll();
-      return members.map(member => {
-        return new MemberDTO({
-          name: member.name,
-          email: member.email,
-          enrollmentStatus: member.enrollmentStatus.name,
-          }
-        )
-      })
+      return await this.memberQueryService.fetchMemberList();
     } catch (error) {
+      if (error instanceof BadRequestError) {
+        console.error(error.message);
+        console.error(error.stack);
+        return;
+      }
+      if (error instanceof ForbiddenError) {
+        console.error(error.message);
+        console.error(error.stack);
+        return;
+      }
+      if (error instanceof InternalServerError) {
+        console.error(error.message);
+        console.error(error.stack);
+        return;
+      }
+      if (error instanceof Error) {
+        console.error(error.message);
+        console.error(error.stack);
+        return;
+      }
       throw error;
     }
   }
