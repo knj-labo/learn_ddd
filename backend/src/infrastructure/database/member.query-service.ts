@@ -1,15 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 
-import { MemberDTO } from "../../usecase/member/member.dto";
-import { IQueryService } from "../../utils/i-query-service";
-import { Member } from "../../domain/member/member";
+import { IMemberQueryService } from "../../domain/member/i.member.query-service";
 
 @Injectable()
-export class MemberQueryService implements IQueryService<Member> {
+export class MemberQueryService implements IMemberQueryService {
   constructor(private readonly prismaClient: PrismaService) {}
 
-  public async findList(): Promise<any>{
+  public async findList(): Promise<any[]>{
     const memberList = await this.prismaClient.member.findMany({
       include: {
         enrollmentStatus: true,
@@ -17,12 +15,11 @@ export class MemberQueryService implements IQueryService<Member> {
     });
 
     return memberList.map(member => {
-      return new MemberDTO({
-          name: member.name,
-          email: member.email,
-          enrollmentStatus: member.enrollmentStatus.name,
-        }
-      )
+      return ({
+        name: member.name,
+        email: member.email,
+        enrollmentStatus: member.enrollmentStatus.name,
+      })
     })
   }
 }

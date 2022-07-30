@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { MemberDTO } from "./member.dto";
 import { MemberId } from "../../domain/member/member-id";
 import { MemberQueryService } from "../../infrastructure/database/member.query-service";
 import { BadRequestError } from "../../utils/bad-request-error";
