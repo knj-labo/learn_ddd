@@ -1,3 +1,5 @@
+import { MemberName } from "../../domain/member/member-name";
+
 export class MemberDTO {
   public readonly name: string
   public readonly email: string

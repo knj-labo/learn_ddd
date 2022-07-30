@@ -15,7 +15,7 @@ export class MembersUsecase {
    */
   public async findAll(): Promise<MemberDTO[]> {
     try {
-      return await this.memberQueryService.fetchMemberList();
+      return await this.memberQueryService.findList();
     } catch (error) {
       if (error instanceof BadRequestError) {
         console.error(error.message);

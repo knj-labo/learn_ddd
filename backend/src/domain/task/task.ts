@@ -19,7 +19,7 @@ export class Task extends AggregateRoot<TaskProps> {
    * @param {TaskProps} props
    * @param {UniqueEntityID} id
    */
-  private constructor(props: TaskProps, id: UniqueEntityID) {
+  private constructor(props: TaskProps, id: number) {
     super({ ...props }, id);
   }
 
@@ -50,7 +50,7 @@ export class Task extends AggregateRoot<TaskProps> {
 
   /**
    * @param {IUserProps} props
-   * @param {UniqueEntityID} id
+   * @param {number} id
    */
   public get task() {
     return {
