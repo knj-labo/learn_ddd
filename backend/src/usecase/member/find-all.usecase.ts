@@ -5,14 +5,16 @@ import { BadRequestError } from "../../utils/bad-request-error";
 import { ForbiddenError } from "../../utils/forbidden-error";
 import { InternalServerError } from "../../utils/internal-server-error";
 
+import { UseCase } from "./i.member.usecase";
+
 @Injectable()
-export class FindAllMembersUseCase {
+export class FindAllMembersUseCase implements UseCase<any, any> {
   constructor(private readonly memberQueryService : MemberQueryService) {}
 
   /**
    * 参加者一覧を取得する
    */
-  public async findAll(): Promise<MemberDTO[]> {
+  public async findList (): Promise<MemberDTO[]> {
     try {
       return await this.memberQueryService.findList();
     } catch (error) {

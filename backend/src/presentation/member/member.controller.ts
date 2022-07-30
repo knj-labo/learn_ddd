@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { MembersUsecase } from "../../usecase/member/member.usecase";
+import { FindAllMembersUseCase } from "../../usecase/member/find-all.usecase";
 
 @Controller()
 export class MemberController {
-  constructor(private readonly MembersUsecase: MembersUsecase) {}
+  constructor(private readonly findAllMembersUseCase : FindAllMembersUseCase ) {}
 
   @Get('api/v1/members')
   findAll() {
-    return this.MembersUsecase.findAll();
+    return this.findAllMembersUseCase.findList();
   }
 }
