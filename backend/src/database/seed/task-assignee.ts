@@ -10,6 +10,6 @@ export const taskAssignee = async () => {
         taskId: index + 1,
         memberId: 1,
         taskProgressStatusId: 1,
-      }))
+      })),
   });
 };

@@ -1,5 +1,8 @@
-import { TaskProgressStatus, ProgressStatusProps } from './task-progress-status'
-import { DomainException } from "../../utils/domain-exception";
+import {
+  TaskProgressStatus,
+  ProgressStatusProps,
+} from './task-progress-status';
+import { DomainException } from '../../utils/domain-exception';
 
 describe('課題の進捗ステータスの場合で', () => {
   // TODO: 有効な値を配列に格納して、includeを使って検証する
@@ -10,33 +13,33 @@ describe('課題の進捗ステータスの場合で', () => {
   const ERROR_MESSAGE = 'ステータスが適切な値ではありません。';
   it(`${TEST_UNTOUCHED_STATUS}のとき`, () => {
     const props: ProgressStatusProps = {
-      name: TEST_UNTOUCHED_STATUS
-    }
-    const result = new TaskProgressStatus(props)
+      name: TEST_UNTOUCHED_STATUS,
+    };
+    const result = new TaskProgressStatus(props);
     expect(result).toEqual({ props: { name: TEST_UNTOUCHED_STATUS } });
-  })
+  });
 
   it(`${TEST_WAITING_STATUS}のとき`, () => {
     const props: ProgressStatusProps = {
-      name: TEST_WAITING_STATUS
-    }
-    const result = new TaskProgressStatus(props)
+      name: TEST_WAITING_STATUS,
+    };
+    const result = new TaskProgressStatus(props);
     expect(result).toEqual({ props: { name: TEST_WAITING_STATUS } });
-  })
+  });
 
   it(`${TEST_DONE_STATUS}のとき`, () => {
     const props: ProgressStatusProps = {
-      name: TEST_DONE_STATUS
-    }
-    const result = new TaskProgressStatus(props)
+      name: TEST_DONE_STATUS,
+    };
+    const result = new TaskProgressStatus(props);
     expect(result).toEqual({ props: { name: TEST_DONE_STATUS } });
-  })
+  });
 
   it(`${TEST_INVALID_STATUS}のとき`, () => {
     const props: ProgressStatusProps = {
-      name: TEST_DONE_STATUS
-    }
-    const result = () => TaskProgressStatus.create(props)
+      name: TEST_DONE_STATUS,
+    };
+    const result = () => TaskProgressStatus.create(props);
     expect(() => result()).toThrow(new DomainException(ERROR_MESSAGE));
-  })
-})
+  });
+});

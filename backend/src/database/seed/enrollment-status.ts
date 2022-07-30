@@ -15,7 +15,7 @@ export const enrollmentStatus = async () => {
       {
         id: 3,
         name: 'withdraw',
-      }
-    ]
-  })
+      },
+    ],
+  });
 };

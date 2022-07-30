@@ -30,10 +30,10 @@ export class TaskAssignedMemberId extends ValueObject<TaskAssignedMemberIdProps>
   /**
    * @desc ファクトリーメソッド
    */
-  public static create(id: string): TaskAssignedMemberId{
+  public static create(id: string): TaskAssignedMemberId {
     if (!this.isExisted(id)) {
       throw new DomainException('タスク担当者を選択してください。');
     }
-    return new TaskAssignedMemberId({ id: id});
+    return new TaskAssignedMemberId({ id: id });
   }
 }

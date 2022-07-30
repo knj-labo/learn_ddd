@@ -1,5 +1,5 @@
 import { MemberEmail } from './member-email';
-import { DomainException } from "../../utils/domain-exception";
+import { DomainException } from '../../utils/domain-exception';
 
 describe('参加者のメールアドレスを受け取った場合で', () => {
   it('適切な値だったとき、値オブジェクトを作成', () => {

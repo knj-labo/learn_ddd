@@ -30,10 +30,10 @@ export class TaskContent extends ValueObject<TaskContentProps> {
   /**
    * @desc ファクトリーメソッド
    */
-  public static create(content: string): TaskContent{
+  public static create(content: string): TaskContent {
     if (!this.isValid(content)) {
       throw new DomainException('内容を入力してください。');
     }
-    return new TaskContent({ content: content});
+    return new TaskContent({ content: content });
   }
 }

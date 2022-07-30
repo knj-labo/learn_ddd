@@ -1,10 +1,10 @@
 import { AggregateRoot } from '../../utils/aggregate-root';
 import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
-import { TaskAssignedMemberId } from "./task-assigned-member-id";
-import { TaskTitle } from "./task-title";
-import { TaskContent } from "./task-content";
-import { TaskProgressStatus } from "./task-progress-status";
+import { TaskAssignedMemberId } from './task-assigned-member-id';
+import { TaskTitle } from './task-title';
+import { TaskContent } from './task-content';
+import { TaskProgressStatus } from './task-progress-status';
 
 interface TaskProps {
   assignedMemberId: TaskAssignedMemberId;
@@ -42,7 +42,7 @@ export class Task extends AggregateRoot<TaskProps> {
   /**
    * コンテンツを取得
    */
-  private get content(): TaskContent{
+  private get content(): TaskContent {
     return this.props.content;
   }
 
@@ -63,13 +63,13 @@ export class Task extends AggregateRoot<TaskProps> {
       title: this.title,
       content: this.content,
       progressStatus: this.progressStatus,
-    }
+    };
   }
 
   /**
    *
    */
-  public changeProgressStatus () {
+  public changeProgressStatus() {
     // TODO: check own task
     // TODO: validation(isDone)
     // TODO: change progress status

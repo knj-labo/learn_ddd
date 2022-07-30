@@ -1,4 +1,4 @@
-import { TaskTitle } from "./task-title";
+import { TaskTitle } from './task-title';
 import { DomainException } from '../../utils/domain-exception';
 
 describe('課題のタイトルを受け取った場合で', () => {

@@ -10,6 +10,6 @@ export const member = async () => {
         name: 'member' + (index + 1),
         email: 'email' + (index + 1) + '@example.com',
         enrollmentStatusId: 1,
-    }))
+      })),
   });
 };

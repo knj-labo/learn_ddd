@@ -5,4 +5,3 @@
 export interface QueryServiceInterface {
   findAll(params: any): Promise<any>;
 }
-

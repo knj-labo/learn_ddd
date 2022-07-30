@@ -34,6 +34,6 @@ export class TaskTitle extends ValueObject<TaskTitleProps> {
     if (!this.isValid(title)) {
       throw new DomainException('タイトルを入力してください。');
     }
-    return new TaskTitle({ title: title});
+    return new TaskTitle({ title: title });
   }
 }

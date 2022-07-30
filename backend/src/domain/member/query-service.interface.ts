@@ -1,5 +1,5 @@
-import { QueryServiceInterface } from "../../utils/query-service.interface";
-import { Member } from "./member";
+import { QueryServiceInterface } from '../../utils/query-service.interface';
+import { Member } from './member';
 
 export class MemberQueryServiceInterface implements QueryServiceInterface {
   protected _model;
@@ -7,7 +7,9 @@ export class MemberQueryServiceInterface implements QueryServiceInterface {
     this._model = model;
   }
 
-  async findAll(params: { include: { enrollmentStatus: boolean }}): Promise<Member[]> {
+  async findAll(params: {
+    include: { enrollmentStatus: boolean };
+  }): Promise<Member[]> {
     const { include } = params;
 
     return await this._model.findMany({

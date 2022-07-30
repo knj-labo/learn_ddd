@@ -1,6 +1,6 @@
 import { Entity } from '../../utils/entity';
 import type { UniqueEntityID } from '../../utils/unique-entity-id';
-import { ValueObject } from "../../utils/value-object";
+import { ValueObject } from '../../utils/value-object';
 
 /**
  * @class TaskIdエンティティ

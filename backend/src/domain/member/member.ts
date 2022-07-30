@@ -2,7 +2,7 @@ import { AggregateRoot } from '../../utils/aggregate-root';
 
 import type { MemberName } from './member-name';
 import type { MemberEmail } from './member-email';
-import { MemberEnrollmentStatus } from "./member-enrollment-status";
+import { MemberEnrollmentStatus } from './member-enrollment-status';
 
 export interface MemberProps {
   name: MemberName;
@@ -14,7 +14,6 @@ export interface MemberProps {
  * @extends AggregateRoot
  */
 export class Member extends AggregateRoot<MemberProps> {
-
   public get name(): MemberName {
     return this.props.name;
   }
@@ -23,11 +22,11 @@ export class Member extends AggregateRoot<MemberProps> {
     return this.props.email;
   }
 
-  public get enrollmentStatus(): MemberEnrollmentStatus{
+  public get enrollmentStatus(): MemberEnrollmentStatus {
     return this.props.enrollmentStatus;
   }
 
-  private constructor (props: MemberProps, id?: number) {
+  private constructor(props: MemberProps, id?: number) {
     super(props, id);
   }
 

@@ -1,5 +1,5 @@
 import { ValueObject } from '../../utils/value-object';
-import { DomainException } from "../../utils/domain-exception";
+import { DomainException } from '../../utils/domain-exception';
 
 export interface ProgressStatusProps {
   name: 'untouched' | 'waiting' | 'done';
@@ -32,6 +32,6 @@ export class TaskProgressStatus extends ValueObject<ProgressStatusProps> {
     if (!this.isValid(name)) {
       throw new DomainException('ステータスが適切な値ではありません。');
     }
-    return new TaskProgressStatus({ name: name});
+    return new TaskProgressStatus({ name: name });
   }
 }

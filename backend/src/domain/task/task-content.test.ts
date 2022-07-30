@@ -1,4 +1,4 @@
-import { TaskContent } from "./task-content";
+import { TaskContent } from './task-content';
 import { DomainException } from '../../utils/domain-exception';
 
 describe('課題の内容を受け取った場合で', () => {

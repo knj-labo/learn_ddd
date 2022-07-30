@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 
-import { TaskQueryServiceInterface } from "../../domain/task/query-service.interface";
-import { TaskDTO } from "../../usecase/task/task.dto";
+import { TaskQueryServiceInterface } from '../../domain/task/query-service.interface';
+import { TaskDTO } from '../../usecase/task/task.dto';
 
 /**
  * 複数のテーブルを結合して、DTOをに詰め替える
@@ -15,7 +15,7 @@ export class TaskQueryService extends TaskQueryServiceInterface {
     super(prisma.taskAssignee);
   }
 
-  public async findAll(prams:{memberId: number}): Promise<TaskDTO[]> {
+  public async findAll(prams: { memberId: number }): Promise<TaskDTO[]> {
     const tasks = await this.prisma.taskAssignee.findMany({
       where: {
         memberId: prams.memberId,
@@ -26,28 +26,28 @@ export class TaskQueryService extends TaskQueryServiceInterface {
           select: {
             title: true,
             content: true,
-          }
+          },
         },
         member: {
           select: {
             name: true,
-          }
+          },
         },
         taskProgressStatus: {
           select: {
             name: true,
-          }
+          },
         },
-      }
+      },
     });
 
-    return tasks.map(task => {
-      return ({
+    return tasks.map((task) => {
+      return {
         assignedMemberName: task.member.name,
         title: task.task.title,
         content: task.task.content,
         progressStatus: task.taskProgressStatus.name,
-      })
+      };
     });
   }
 }

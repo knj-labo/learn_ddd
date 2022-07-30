@@ -1,5 +1,5 @@
 import { ValueObject } from '../../utils/value-object';
-import { DomainException } from "../../utils/domain-exception";
+import { DomainException } from '../../utils/domain-exception';
 
 export interface MemberEmailProps {
   email: string;
@@ -38,7 +38,9 @@ export class MemberEmail extends ValueObject<MemberEmailProps> {
    */
   public static create(email: string): MemberEmail {
     if (!this.isValid(email)) {
-      throw new DomainException('メールアドレスが正しいフォーマットではありません。');
+      throw new DomainException(
+        'メールアドレスが正しいフォーマットではありません。',
+      );
     }
     return new MemberEmail({ email });
   }

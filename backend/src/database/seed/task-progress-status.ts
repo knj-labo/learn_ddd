@@ -15,7 +15,7 @@ export const taskProgressStatus = async () => {
       {
         id: 3,
         name: 'done',
-      }
-    ]
-  })
+      },
+    ],
+  });
 };

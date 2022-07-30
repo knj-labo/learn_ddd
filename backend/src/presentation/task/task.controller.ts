@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { FindAllTasksUsecase } from "../../usecase/task/find-all.usecase";
+import { FindAllTasksUsecase } from '../../usecase/task/find-all.usecase';
 
 @Controller('api/v1/tasks/')
 export class TaskController {

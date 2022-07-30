@@ -2,8 +2,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 import { member } from './member';
 import { enrollmentStatus } from './enrollment-status';
-import { task } from "./task";
-import { taskAssignee } from "./task-assignee";
+import { task } from './task';
+import { taskAssignee } from './task-assignee';
 import { taskProgressStatus } from './task-progress-status';
 
 async function main() {

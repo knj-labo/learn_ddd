@@ -1,5 +1,5 @@
 import { ValueObject } from '../../utils/value-object';
-import { DomainException } from "../../utils/domain-exception";
+import { DomainException } from '../../utils/domain-exception';
 
 interface EnrollmentStatusProps {
   value: string;

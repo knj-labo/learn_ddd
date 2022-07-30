@@ -9,6 +9,6 @@ export const task = async () => {
         id: index + 1,
         title: 'task' + (index + 1),
         content: 'content' + (index + 1),
-      }))
+      })),
   });
 };
