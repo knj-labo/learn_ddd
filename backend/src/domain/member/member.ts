@@ -1,12 +1,11 @@
 import { AggregateRoot } from '../../utils/aggregate-root';
-import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
-import type { MemberEmail } from './member-email';
 import type { MemberName } from './member-name';
+import type { MemberEmail } from './member-email';
 
 export interface MemberProps {
   name: MemberName;
-  email: string;
+  email: MemberEmail;
   enrollmentStatus: string;
 }
 
@@ -20,7 +19,7 @@ export class Member extends AggregateRoot<MemberProps> {
     return this.props.name;
   }
 
-  public get email(): string {
+  public get email(): MemberEmail {
     return this.props.email;
   }
 
