@@ -6,7 +6,7 @@ export class MemberController {
   constructor(private readonly MembersUsecase: MembersUsecase) {}
 
   @Get('api/v1/members')
-  getAll() {
+  findAll() {
     return this.MembersUsecase.findAll();
   }
 }

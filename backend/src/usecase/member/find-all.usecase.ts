@@ -6,7 +6,7 @@ import { ForbiddenError } from "../../utils/forbidden-error";
 import { InternalServerError } from "../../utils/internal-server-error";
 
 @Injectable()
-export class MembersUsecase {
+export class FindAllMembersUseCase {
   constructor(private readonly memberQueryService : MemberQueryService) {}
 
   /**
