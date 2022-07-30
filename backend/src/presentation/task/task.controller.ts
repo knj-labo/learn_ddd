@@ -12,6 +12,6 @@ export class TaskController {
   @Get(':id')
   findAssignedTaskList(@Param('id') id: string) {
     const numberedId = Number(id);
-    return this.TaskUsecase.findAllAssignedByMemberId(numberedId);
+    return this.TaskUsecase.findTaskList(numberedId);
   }
 }
