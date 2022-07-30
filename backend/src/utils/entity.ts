@@ -1,9 +1,3 @@
-import { UniqueEntityID } from './unique-entity-id';
-
-/**
- * @see //https://github.com/HenrikGr/ddd-typescript/blob/master/src/core/domain/Entity.ts
- */
-
 /**
  * @class エンティティクラスを実装
  *
@@ -14,6 +8,7 @@ import { UniqueEntityID } from './unique-entity-id';
  * - どのような条件でできるかを表現
  *
  * @param T 値オブジェクト
+ * @see //https://github.com/HenrikGr/ddd-typescript/blob/master/src/core/domain/Entity.ts
  */
 export abstract class Entity<T> {
   protected readonly _id: number;

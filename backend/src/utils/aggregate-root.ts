@@ -1,5 +1,4 @@
 import { Entity } from '../utils/entity';
-import type { UniqueEntityID } from '../utils/unique-entity-id';
 
 /**
  * @abstract AggregateRoot<T>
