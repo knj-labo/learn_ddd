@@ -4,26 +4,19 @@ import { ForbiddenError } from "../../utils/forbidden-error";
 import { InternalServerError } from "../../utils/internal-server-error";
 import { TaskRepository } from "../../infrastructure/database/task.repository";
 import { TaskDTO } from "./task.dto";
+import { TaskQueryService } from "../../infrastructure/database/task.query-service";
 
 
 @Injectable()
 export class TaskUsecase {
-  constructor(private readonly taskRepository: TaskRepository) {}
+  constructor(private readonly taskQueryService: TaskQueryService) {}
 
   /**
-   * 参加者一覧を取得する
+   * 参加者に割り当てられたタスク一覧を取得
    */
-  public async findAllAssignedByMemberId(id : number): Promise<TaskDTO[]> {
+  public async findTaskList(id : number): Promise<TaskDTO[]> {
   try {
-    const tasks = await this.taskRepository.findAllAssignedByMemberId(id);
-    return tasks.map(task => {
-      return new TaskDTO({
-        assignedMemberName: task.member.name,
-        title: task.task.title,
-        content: task.task.content,
-        progressStatus: task.taskProgressStatus.name,
-      })
-    });
+    return await this.taskQueryService.fetchByMemberId(id);
   } catch (error) {
     if (error instanceof BadRequestError) {
       console.error(error.message);
