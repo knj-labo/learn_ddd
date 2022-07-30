@@ -1,14 +1,11 @@
-import { IRead } from './i-read';
-
+interface IRead<T> {
+  findList(): Promise<T[]>;
+}
 /**
  * CQRSのQueryServiceを実装するためのインターフェース
  * @abstract 外部APIに接続するため
  */
-export abstract class IQueryService<T> implements IRead<T> {
-  find(id: string): Promise<T>{
-    throw new Error("メソッドを理解できず、データに対して対応することができませんでした。");
-  }
-  findList(item: T): Promise<T[]> {
-    throw new Error("メソッドを理解できず、データに対して対応することができませんでした。");
-  }
+export interface IQueryService<T> extends IRead<T> {
+  findList(): Promise<T[]>
 }
+
