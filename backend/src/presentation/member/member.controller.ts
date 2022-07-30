@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+
 import { FindAllMembersUseCase } from '../../usecase/member/find-all.usecase';
 
 @Controller()
