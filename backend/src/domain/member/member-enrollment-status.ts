@@ -1,14 +1,8 @@
 import { ValueObject } from '../../utils/value-object';
-
-export interface EnrollmentStatus {
-  name: string;
-  ENROLLMENT: 'enrolled';
-  ABSENCE: 'absented';
-  WITHDRAWAL: 'withdraw';
-}
+import { DomainException } from "../../utils/domain-exception";
 
 interface EnrollmentStatusProps {
-  name: string;
+  value: string;
 }
 /**
  * @class 参加者の在籍ステータスを表す値オブジェクト
@@ -25,16 +19,20 @@ export class MemberEnrollmentStatus extends ValueObject<EnrollmentStatusProps> {
   }
 
   public get status(): string {
-    if(!this.isValid(this.props.name)) {
-      throw new Error('ステータスが適切な値ではありません。');
-    }
-    return this.props.name;
+    return this.props.value;
   }
 
   /**
    * @desc 'enrolled'か'absented'か'withdraw'かを判定
    */
-  private isValid(value: string): boolean {
+  private static isValid(value: string): boolean {
     return value === 'enrolled' || value === 'absented' || value === 'withdraw';
+  }
+
+  public static create(status: string): MemberEnrollmentStatus {
+    if (!this.isValid(status)) {
+      throw new DomainException('ステータスが適切な値ではありません。');
+    }
+    return new MemberEnrollmentStatus({ value: status });
   }
 }
