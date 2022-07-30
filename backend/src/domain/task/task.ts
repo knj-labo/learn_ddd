@@ -1,11 +1,16 @@
 import { AggregateRoot } from '../../utils/aggregate-root';
 import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
+import { TaskAssignedMemberId } from "./task-assigned-member-id";
+import { TaskTitle } from "./task-title";
+import { TaskContent } from "./task-content";
+import { TaskProgressStatus } from "./task-progress-status";
+
 interface TaskProps {
-  assignedMemberId: string;
-  title: string;
-  content: string;
-  progressStatus: 'untouched' | 'waiting' | 'done';
+  assignedMemberId: TaskAssignedMemberId;
+  title: TaskTitle;
+  content: TaskContent;
+  progressStatus: TaskProgressStatus;
 }
 
 /**
@@ -23,21 +28,21 @@ export class Task extends AggregateRoot<TaskProps> {
     super({ ...props }, id);
   }
 
-  private get assignedMemberId(): string {
+  private get assignedMemberId(): TaskAssignedMemberId {
     return this.props.assignedMemberId;
   }
 
   /**
    * タイトルを取得
    */
-  private get title(): string {
+  private get title(): TaskTitle {
     return this.props.title;
   }
 
   /**
    * コンテンツを取得
    */
-  private get content(): string{
+  private get content(): TaskContent{
     return this.props.content;
   }
 

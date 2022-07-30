@@ -1,9 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { TaskUsecase } from "../../usecase/task/task.usecase";
+import { FindAllTasksUsecase } from "../../usecase/task/find-all.usecase";
 
 @Controller('api/v1/tasks/')
 export class TaskController {
-  constructor(private readonly TaskUsecase: TaskUsecase) {}
+  constructor(private readonly findAllTasks: FindAllTasksUsecase) {}
 
   /**
    * 参加者に割り当てられたタスク一覧を取得する
@@ -12,6 +12,6 @@ export class TaskController {
   @Get(':id')
   findAssignedTaskList(@Param('id') id: string) {
     const numberedId = Number(id);
-    return this.TaskUsecase.findTaskList(numberedId);
+    return this.findAllTasks.execute(numberedId);
   }
 }

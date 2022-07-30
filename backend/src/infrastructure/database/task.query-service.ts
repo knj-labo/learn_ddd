@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
-import { TaskDTO } from "../../usecase/task/task.dto";
-import { TaskRepository } from "./task.repository";
 
+import { TaskQueryServiceInterface } from "../../domain/task/query-service.interface";
+import { TaskDTO } from "../../usecase/task/task.dto";
 
 /**
  * 複数のテーブルを結合して、DTOをに詰め替える
@@ -10,13 +10,15 @@ import { TaskRepository } from "./task.repository";
  * @see https://little-hands.hatenablog.com/entry/2019/12/02/cqrs
  */
 @Injectable()
-export class TaskQueryService {
-  constructor(private readonly prismaClient: PrismaService) {}
+export class TaskQueryService extends TaskQueryServiceInterface {
+  constructor(private readonly prisma: PrismaService) {
+    super(prisma.taskAssignee);
+  }
 
-  public async fetchByMemberId(id: number): Promise<TaskDTO[]> {
-    const tasks = await this.prismaClient.taskAssignee.findMany({
+  public async findAll(prams:{memberId: number}): Promise<TaskDTO[]> {
+    const tasks = await this.prisma.taskAssignee.findMany({
       where: {
-        memberId: id,
+        memberId: prams.memberId,
       },
       select: {
         id: true,
@@ -40,7 +42,7 @@ export class TaskQueryService {
     });
 
     return tasks.map(task => {
-      return new TaskDTO({
+      return ({
         assignedMemberName: task.member.name,
         title: task.task.title,
         content: task.task.content,
