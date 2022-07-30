@@ -1,8 +1,8 @@
 import { AggregateRoot } from '../../utils/aggregate-root';
 
-import type { MemberName } from './member-name';
 import type { MemberEmail } from './member-email';
-import { MemberEnrollmentStatus } from './member-enrollment-status';
+import type { MemberEnrollmentStatus } from './member-enrollment-status';
+import type { MemberName } from './member-name';
 
 export interface MemberProps {
   name: MemberName;

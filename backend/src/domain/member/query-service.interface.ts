@@ -1,8 +1,9 @@
-import { QueryServiceInterface } from '../../utils/query-service.interface';
-import { Member } from './member';
+import type { QueryServiceInterface } from '../../utils/query-service.interface';
+import type { Member } from './member';
 
 export class MemberQueryServiceInterface implements QueryServiceInterface {
   protected _model;
+
   constructor(model) {
     this._model = model;
   }

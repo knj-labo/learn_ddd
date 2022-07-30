@@ -1,5 +1,6 @@
-import { MemberName } from './member-name';
 import { DomainException } from '../../utils/domain-exception';
+
+import { MemberName } from './member-name';
 
 describe('参加者の名前を受け取った場合で', () => {
   it('適切な値だったとき、値オブジェクトを作成', () => {

@@ -1,5 +1,6 @@
-import { MemberEnrollmentStatus } from './member-enrollment-status';
 import { DomainException } from '../../utils/domain-exception';
+
+import { MemberEnrollmentStatus } from './member-enrollment-status';
 
 describe('参加者の在籍ステータスの場合で', () => {
   const TEST_ENROLLMENT_STATUS = 'enrolled';
