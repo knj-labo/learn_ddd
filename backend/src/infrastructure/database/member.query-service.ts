@@ -1,14 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
 
-import { IMemberQueryService } from "../../domain/member/i.member.query-service";
+import { MemberQueryServiceInterface } from "../../domain/member/query-service.interface";
+import { MemberDTO } from "../../usecase/member/member.dto";
 
 @Injectable()
-export class MemberQueryService implements IMemberQueryService {
-  constructor(private readonly prismaClient: PrismaService) {}
+export class MemberQueryService extends MemberQueryServiceInterface {
+  constructor(private prisma: PrismaService) {
+    super(prisma.member);
+  }
 
-  public async findList(): Promise<any[]>{
-    const memberList = await this.prismaClient.member.findMany({
+  public async findList(): Promise<MemberDTO[]> {
+    const memberList = await this.prisma.member.findMany({
       include: {
         enrollmentStatus: true,
       }
@@ -22,4 +25,4 @@ export class MemberQueryService implements IMemberQueryService {
       })
     })
   }
-}
+};
