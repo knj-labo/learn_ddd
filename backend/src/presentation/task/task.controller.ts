@@ -6,7 +6,7 @@ export class TaskController {
   constructor(private readonly TaskUsecase: TaskUsecase) {}
 
   @Get('api/v1/tasks')
-  findAllAssignedByMemberId() {
+  findAssignedTaskList() {
     return this.TaskUsecase.findAllAssignedByMemberId();
   }
 }

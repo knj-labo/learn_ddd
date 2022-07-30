@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/prisma.service';
-import { MemberId } from "../../domain/member/member-id";
 
 @Injectable()
 export class TaskRepository {
@@ -10,9 +9,28 @@ export class TaskRepository {
    * 参加者に割り当てられたタスク一覧を取得
    */
   public async findAllAssignedByMemberId (): Promise<any> {
-    return await this.prismaClient.task.findMany({
-      include: {
-        TaskAssignee: true
+    return await this.prismaClient.taskAssignee.findMany({
+      where: {
+        memberId: 1,
+      },
+      select: {
+        id: true,
+        task: {
+          select: {
+            title: true,
+            content: true,
+          }
+        },
+        member: {
+          select: {
+            name: true,
+          }
+        },
+        taskProgressStatus: {
+          select: {
+            name: true,
+          }
+        },
       }
     });
   }
