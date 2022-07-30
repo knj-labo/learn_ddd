@@ -1,8 +1,9 @@
-import { QueryServiceInterface } from '../../utils/query-service.interface';
-import { TaskDTO } from '../../usecase/task/task.dto';
+import type { TaskDTO } from '../../usecase/task/task.dto';
+import type { QueryServiceInterface } from '../../utils/query-service.interface';
 
 export class TaskQueryServiceInterface implements QueryServiceInterface {
   protected _model;
+
   constructor(model) {
     this._model = model;
   }

@@ -1,8 +1,12 @@
-import {
-  TaskProgressStatus,
-  ProgressStatusProps,
-} from './task-progress-status';
 import { DomainException } from '../../utils/domain-exception';
+
+import {
+  TaskProgressStatus
+} from './task-progress-status';
+
+import type {
+  ProgressStatusProps} from './task-progress-status';
+
 
 describe('課題の進捗ステータスの場合で', () => {
   // TODO: 有効な値を配列に格納して、includeを使って検証する

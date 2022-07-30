@@ -1,10 +1,12 @@
 import { AggregateRoot } from '../../utils/aggregate-root';
-import type { UniqueEntityID } from '../../utils/unique-entity-id';
 
-import { TaskAssignedMemberId } from './task-assigned-member-id';
-import { TaskTitle } from './task-title';
-import { TaskContent } from './task-content';
-import { TaskProgressStatus } from './task-progress-status';
+
+import type { UniqueEntityID } from '../../utils/unique-entity-id';
+import type { TaskAssignedMemberId } from './task-assigned-member-id';
+import type { TaskContent } from './task-content';
+import type { TaskProgressStatus } from './task-progress-status';
+import type { TaskTitle } from './task-title';
+
 
 interface TaskProps {
   assignedMemberId: TaskAssignedMemberId;

@@ -1,5 +1,5 @@
-import { ValueObject } from '../../utils/value-object';
 import { DomainException } from '../../utils/domain-exception';
+import { ValueObject } from '../../utils/value-object';
 
 interface TaskAssignedMemberIdProps {
   id: string;
@@ -34,6 +34,6 @@ export class TaskAssignedMemberId extends ValueObject<TaskAssignedMemberIdProps>
     if (!this.isExisted(id)) {
       throw new DomainException('タスク担当者を選択してください。');
     }
-    return new TaskAssignedMemberId({ id: id });
+    return new TaskAssignedMemberId({ id });
   }
 }

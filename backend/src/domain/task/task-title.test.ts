@@ -1,5 +1,6 @@
-import { TaskTitle } from './task-title';
 import { DomainException } from '../../utils/domain-exception';
+
+import { TaskTitle } from './task-title';
 
 describe('課題のタイトルを受け取った場合で', () => {
   it('適切な値だったとき、値オブジェクトを作成', () => {

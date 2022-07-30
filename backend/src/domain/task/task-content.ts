@@ -1,5 +1,5 @@
-import { ValueObject } from '../../utils/value-object';
 import { DomainException } from '../../utils/domain-exception';
+import { ValueObject } from '../../utils/value-object';
 
 interface TaskContentProps {
   content: string;
@@ -34,6 +34,6 @@ export class TaskContent extends ValueObject<TaskContentProps> {
     if (!this.isValid(content)) {
       throw new DomainException('内容を入力してください。');
     }
-    return new TaskContent({ content: content });
+    return new TaskContent({ content });
   }
 }
