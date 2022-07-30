@@ -6,8 +6,8 @@ import type { MemberName } from './member-name';
 
 export interface MemberProps {
   name: MemberName;
-  email: MemberEmail;
-  enrollmentStatus: any;
+  email: string;
+  enrollmentStatus: string;
 }
 
 /**
@@ -15,56 +15,24 @@ export interface MemberProps {
  * @extends AggregateRoot
  */
 export class Member extends AggregateRoot<MemberProps> {
-  /**
-   * メンバーエンティティの作成
-   * @private
-   * @param {MemberProps} props
-   * @param {UniqueEntityID} id
-   */
-  private constructor(props: MemberProps, id: UniqueEntityID) {
-    const { name, email, enrollmentStatus } = props;
-    super({ name, email, enrollmentStatus }, id);
-  }
 
-  /**
-   * メンバー名を取得
-   */
   public get name(): MemberName {
     return this.props.name;
   }
 
-  /**
-   * メンバーのメールアドレスを取得
-   */
-  public get email(): MemberEmail {
+  public get email(): string {
     return this.props.email;
   }
 
-  /**
-   * メンバーの在籍ステータスを取得
-   */
-  public get enrollmentStatus() {
+  public get enrollmentStatus(): string {
     return this.props.enrollmentStatus;
   }
 
-  /**
-   * @param {IUserProps} props
-   * @param {UniqueEntityID} id
-   */
-  public static create(props: MemberProps, id?: UniqueEntityID) {
-    return new Member({ ...props }, id);
+  private constructor (props: MemberProps, id?: number) {
+    super(props, id);
   }
 
-  /**
-   * @param {IUserProps} props
-   * @param {UniqueEntityID} id
-   */
-  public get() {
-    return {
-      id: this.id.toString(),
-      name: this.name,
-      email: this.email,
-      enrollmentStatus: this.enrollmentStatus,
-    }
+  public static create(props: MemberProps): Member {
+    return new Member(props);
   }
 }

@@ -6,7 +6,7 @@ describe('参加者の名前を受け取った場合で', () => {
     const TEST_NAME = 'テスト太郎';
 
     const result = MemberName.create(TEST_NAME);
-    expect(result.name).toBe(TEST_NAME);
+    expect(result.props.value).toBe(TEST_NAME);
   });
 
   it('空文字だったとき、例外を投げる', () => {

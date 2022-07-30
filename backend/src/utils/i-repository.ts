@@ -5,6 +5,14 @@ import { IWrite } from './i-write';
  * @abstract 外部APIに接続するため
  */
 export abstract class IRepository<T> implements IWrite<T> {
+
+  public readonly _collection: Collection;
+
+  //we created constructor with arguments to manipulate mongodb operations
+  constructor(db: Db, collectionName: string) {
+    this._collection = db.collection(collectionName);
+  }
+
   create(item: T): Promise<boolean> {
     throw new Error("メソッドを理解できず、データに対して対応することができませんでした。");
   }

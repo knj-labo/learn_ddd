@@ -5,12 +5,6 @@ import { UniqueEntityID } from './unique-entity-id';
  */
 
 /**
- * @desc エンティティの比較
- * @param v
- */
-const isEntity = (v: any): v is Entity<any> => v instanceof Entity;
-
-/**
  * @class エンティティクラスを実装
  *
  * @desc モデルの不変性を保証するために、エンティティを使用
@@ -22,42 +16,14 @@ const isEntity = (v: any): v is Entity<any> => v instanceof Entity;
  * @param T 値オブジェクト
  */
 export abstract class Entity<T> {
-  /**
-   * @desc インスタンス化された後に変更できないように読み取り専用
-   */
-  protected readonly _id: UniqueEntityID;
+  protected readonly _id: number
 
-  /**
-   * @desc 値オブジェクトの props は this.props に格納
-   * サブクラスで getter を定義することで参照できるようにする
-   */
-  public readonly props: T;
+  public readonly props: T
 
-  /**
-   * @desc エンティティの新規インスタンスの作成
-   * @param 値オブジェクト, id
-   */
-  constructor(props: T, id?: UniqueEntityID) {
-    this._id = id || new UniqueEntityID();
-    this.props = props;
-  }
-
-  /**
-   * @param object
-   */
-  public equals(object?: Entity<T>): boolean {
-    if (object == null) {
-      return false;
-    }
-
-    if (this === object) {
-      return true;
-    }
-
-    if (!isEntity(object)) {
-      return false;
-    }
-
-    return this._id.equals(object._id);
+  constructor(props: T, id?: number) {
+    this._id = id
+    this.props = props
   }
 }
+
+
