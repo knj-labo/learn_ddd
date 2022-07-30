@@ -1,4 +1,4 @@
-interface MemberDTO {
+export interface MemberDTO {
   name: string;
   email: string;
   enrollmentStatus: string;

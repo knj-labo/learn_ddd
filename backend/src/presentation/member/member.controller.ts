@@ -7,6 +7,6 @@ export class MemberController {
 
   @Get('api/v1/members')
   findAll() {
-    return this.findAllMembersUseCase.findList();
+    return this.findAllMembersUseCase.execute();
   }
 }

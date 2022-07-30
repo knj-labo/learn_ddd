@@ -6,51 +6,25 @@ import { ForbiddenError } from "../../utils/forbidden-error";
 import { InternalServerError } from "../../utils/internal-server-error";
 
 import { UseCase } from "./i.member.usecase";
+import { Member } from "../../domain/member/member";
+import { MemberDTO } from "./member.dto";
+
+interface FindAllMembersUseCaseRequestDTO {
+  name: string
+  email: string
+  enrollmentStatus: string
+}
 
 @Injectable()
-export class FindAllMembersUseCase implements UseCase<any, any> {
+export class FindAllMembersUseCase implements UseCase<any, Member> {
   constructor(private readonly memberQueryService : MemberQueryService) {}
-
   /**
    * 参加者一覧を取得する
    */
-  public async findList (): Promise<MemberDTO[]> {
-    try {
-      return await this.memberQueryService.findList();
-    } catch (error) {
-      if (error instanceof BadRequestError) {
-        console.error(error.message);
-        console.error(error.stack);
-        return;
-      }
-      if (error instanceof ForbiddenError) {
-        console.error(error.message);
-        console.error(error.stack);
-        return;
-      }
-      if (error instanceof InternalServerError) {
-        console.error(error.message);
-        console.error(error.stack);
-        return;
-      }
-      if (error instanceof Error) {
-        console.error(error.message);
-        console.error(error.stack);
-        return;
-      }
-      throw error;
-    }
+  private async findList (): Promise<MemberDTO[]> {
+    return await this.memberQueryService.findList();
   }
-
-  /**
-   * 参加者のメールアドレスを変更
-   */
-  public async changeEmail(memberId: MemberId, email: string): Promise<any> {
-    try {
-      // TODO: メールアドレスの一意検証
-      // TODO: メールアドレスの保存
-    } catch (error) {
-      throw error;
-    }
+  public async execute(): Promise<any> {
+    return await this.findList();
   }
 }
