@@ -6,19 +6,17 @@
     "format:prisma": "npm run format -w backend",
     "format:fix": "npm run format:backend -- --write --cache && npm run format:frontend -- --write --cache ",
     "format": "npm run format:backend && npm run format:frontend",
-    "format:backend": "prettier --check --ignore-path server/.gitignore backend/**/*.{js,ts}",
-    "format:frontend": "prettier --check --ignore-path client/.gitignore frontend/**/*.{ts,tsx,css}",
+    "format:backend": "prettier --check --ignore-path backend/.gitignore backend/**/*.{js,ts}",
+    "format:frontend": "prettier --check --ignore-path frontend/.gitignore frontend/**/*.{ts,tsx,css}",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
   },
   "lint-staged": {
-    "backend/*.{ts,jsx,tsx}": [
-      "npx eslint --ignore-path server/.gitignore backend/**/*.{ts} --fix",
-      "npx prettier --write ."
+    "backend/*.ts": [
+      "npx prettier --check --ignore-path backend/.gitignore"
     ],
-    "frontend/*.{ts,jsx,tsx}": [
-      "npx eslint . --fix",
-      "npx prettier --write ."
+    "frontend/*.{ts,,tsx, css}": [
+      "npx prettier --check --ignore-path frontend/.gitignore"
     ]
   },
   "devDependencies": {
