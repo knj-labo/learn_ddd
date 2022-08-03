@@ -29,6 +29,22 @@ export class MemberQueryService extends MemberQueryServiceInterface {
     }
   }
 
+  public async findMemberById(id: number): Promise<MemberDTO> {
+    const member = await this.prisma.member.findUnique({
+      where: {
+        id: id
+      },
+      include: {
+        enrollmentStatus: true,
+      }
+    });
+    return {
+      name: member.name,
+      email: member.email,
+      enrollmentStatus: member.enrollmentStatus.name,
+    }
+  }
+
   public async findList(): Promise<MemberDTO[]> {
     const memberList = await this.prisma.member.findMany({
       include: {

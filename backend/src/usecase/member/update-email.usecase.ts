@@ -6,21 +6,23 @@ import type { UseCase } from './i.member.usecase';
 
 @Injectable()
 export class UpdateEmail implements UseCase<any, MemberAggregate> {
+
   constructor(private readonly memberQueryService: MemberQueryService) {}
 
   /**
    * 参加者のメールアドレスを更新する
    */
-  private async updateEmail(memberId: number, email: string): Promise<any> {
+  private async updateEmail(request): Promise<any> {
     try {
-      // TODO: メールアドレスの一意検証
-      // TODO: メールアドレスの保存
+      await this.memberQueryService.findMemberById(request.memberId)
     } catch (error) {
       throw error;
     }
+
+    // Update logic
   }
 
   public async execute(): Promise<any> {
-    return await this.updateEmail(1, 'sample@example.com');
+    return await this.updateEmail(1);
   }
 }
