@@ -33,4 +33,8 @@ export class MemberAggregate extends AggregateRoot<MemberProps> {
   public static create(props: MemberProps): MemberAggregate {
     return new MemberAggregate(props);
   }
+
+  public static update(props: MemberProps, id: number): MemberAggregate {
+    return new MemberAggregate(props, id);
+  }
 }
