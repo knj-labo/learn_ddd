@@ -16,6 +16,26 @@ export class TaskQueryService extends TaskQueryServiceInterface {
     super(prisma.taskAssignee);
   }
 
+  public async findTaskById(params: { id: number }): Promise<TaskDTO> {
+    const task = await this.prisma.taskAssignee.findUnique({
+      where: {
+        id: params.id,
+      },
+      include: {
+        task: true,
+        member: true,
+        taskProgressStatus: true,
+      }
+    });
+
+    return {
+      assignedMemberName: task.member.name,
+      title: task.task.title,
+      content: task.task.content,
+      progressStatus: task.taskProgressStatus.name,
+    }
+  }
+
   public async findAll(prams: { memberId: number }): Promise<TaskDTO[]> {
     const tasks = await this.prisma.taskAssignee.findMany({
       where: {
