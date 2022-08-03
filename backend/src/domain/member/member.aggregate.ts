@@ -13,7 +13,7 @@ export interface MemberProps {
  * @class メンバー集約を実装
  * @extends AggregateRoot
  */
-export class Member extends AggregateRoot<MemberProps> {
+export class MemberAggregate extends AggregateRoot<MemberProps> {
   public get name(): MemberName {
     return this.props.name;
   }
@@ -30,7 +30,7 @@ export class Member extends AggregateRoot<MemberProps> {
     super(props, id);
   }
 
-  public static create(props: MemberProps): Member {
-    return new Member(props);
+  public static create(props: MemberProps): MemberAggregate {
+    return new MemberAggregate(props);
   }
 }

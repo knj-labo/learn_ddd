@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 
-import type { Member } from '../../domain/member/member';
+import type { MemberAggregate } from '../../domain/member/member.aggregate';
 import type { MemberQueryService } from '../../infrastructure/database/member.query-service';
 import type { UseCase } from './i.member.usecase';
 
 @Injectable()
-export class UpdateEmail implements UseCase<any, Member> {
+export class UpdateEmail implements UseCase<any, MemberAggregate> {
   constructor(private readonly memberQueryService: MemberQueryService) {}
 
   /**

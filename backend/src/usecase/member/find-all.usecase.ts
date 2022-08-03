@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { Member } from '../../domain/member/member';
+import { MemberAggregate } from '../../domain/member/member.aggregate';
 import { MemberQueryService } from '../../infrastructure/database/member.query-service';
 
 import type { UseCase } from './i.member.usecase';
@@ -13,7 +13,7 @@ interface FindAllMembersUseCaseRequestDTO {
 }
 
 @Injectable()
-export class FindAllMembersUseCase implements UseCase<any, Member> {
+export class FindAllMembersUseCase implements UseCase<any, MemberAggregate> {
   constructor(private readonly memberQueryService: MemberQueryService) {}
 
   /**

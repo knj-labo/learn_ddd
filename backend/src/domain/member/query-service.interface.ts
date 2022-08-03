@@ -1,5 +1,5 @@
 import type { QueryServiceInterface } from '../../utils/query-service.interface';
-import type { Member } from './member';
+import type { MemberAggregate } from './member.aggregate';
 
 export class MemberQueryServiceInterface implements QueryServiceInterface {
   protected _model;
@@ -10,7 +10,7 @@ export class MemberQueryServiceInterface implements QueryServiceInterface {
 
   async findAll(params: {
     include: { enrollmentStatus: boolean };
-  }): Promise<Member[]> {
+  }): Promise<MemberAggregate[]> {
     const { include } = params;
 
     return await this._model.findMany({
