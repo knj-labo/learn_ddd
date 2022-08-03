@@ -19,17 +19,7 @@ interface TaskProps {
  * @class 課題集約を実装
  * @extends AggregateRoot
  */
-export class Task extends AggregateRoot<TaskProps> {
-  /**
-   * メンバーエンティティの作成
-   * @private
-   * @param {TaskProps} props
-   * @param {UniqueEntityID} id
-   */
-  private constructor(props: TaskProps, id: number) {
-    super({ ...props }, id);
-  }
-
+export class TaskAggregate extends AggregateRoot<TaskProps> {
   private get assignedMemberId(): TaskAssignedMemberId {
     return this.props.assignedMemberId;
   }
@@ -56,24 +46,20 @@ export class Task extends AggregateRoot<TaskProps> {
   }
 
   /**
-   * @param {IUserProps} props
-   * @param {number} id
+   * メンバーエンティティの作成
+   * @private
+   * @param {TaskProps} props
+   * @param {UniqueEntityID} id
    */
-  public get task() {
-    return {
-      assignedMemberId: this.assignedMemberId,
-      title: this.title,
-      content: this.content,
-      progressStatus: this.progressStatus,
-    };
+  private constructor(props: TaskProps, id?: number) {
+    super({ ...props }, id);
   }
 
-  /**
-   *
-   */
-  public changeProgressStatus() {
-    // TODO: check own task
-    // TODO: validation(isDone)
-    // TODO: change progress status
+  public static create(props: TaskProps): TaskAggregate {
+    return new TaskAggregate(props);
+  }
+
+  public static update(props: TaskProps, id: number): TaskAggregate {
+    return new TaskAggregate(props, id);
   }
 }
