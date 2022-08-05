@@ -8,6 +8,7 @@ import { MemberRepository } from "../../infrastructure/database/members.reposito
 /**
  * @class 参加者ドメインサービス
  * @see https://khalilstemmler.com/articles/typescript-domain-driven-design/updating-aggregates-in-domain-driven-design/
+ * @deprecated
  */
 export class MemberService {
   private memberName;
