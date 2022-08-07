@@ -58,5 +58,5 @@ OK
 
 > エンティティ＝ライフサイクルを持つオブジェクトなので、IDだけを持つIDエンティティというのが、いまいち理解できていない
 
-こちらの(参考のコード)[https://github.com/stemmlerjs/white-label/blob/master/src/core/domain/Entity.ts]を閲覧して、実装したけど
+こちらの [参考のコード](https://github.com/stemmlerjs/white-label/blob/master/src/core/domain/Entity.ts)を閲覧して、実装したけど
 使わなかったので、等価を削除しただけかな。
