@@ -24,6 +24,7 @@ export class MemberEnrollmentStatus extends ValueObject<EnrollmentStatusProps> {
 
   /**
    * @desc 'enrolled'か'absented'か'withdraw'かを判定
+   * @deprecated インフラ層に実装。「DBの値を書き換えてドメイン層に影響が及ぶため」
    */
   private static isValid(value: string): boolean {
     return value === 'enrolled' || value === 'absented' || value === 'withdraw';
