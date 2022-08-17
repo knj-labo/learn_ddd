@@ -80,7 +80,8 @@ utilsという名のゴミ箱みたいにはなっている。（意図として
 
 > member.controller.tsでconstructor()時に各種ユースケースを生成していますが、各メソッド内で生成させたほうが適切ではないでしょうか？
 
-理解できてないので、ここ保留。
+これ、みたけど、各メソッドで生成させたほうがいいね。（具体的には説明できない）
+https://khalilstemmler.com/articles/typescript-domain-driven-design/ddd-vs-crud-design/
 
 > member.service.tsのserviceという名称は意味が広く、なんでも入れることができる呼称のため、実装が膨らみがちです。決して誤りではありませんが、member-update-email-serviceなど個別に切り分けたほうが良いかもしれません！
 
