@@ -1,5 +1,5 @@
 # REVIEW
-
+from:mirai
 > 例えば、domainディレクトリ内に、クラスファイルとテストファイルが混在しているのは分けた方が親切かも？
 
 大規模になるとその方が親切。
@@ -60,3 +60,32 @@ OK
 
 こちらの [参考のコード](https://github.com/stemmlerjs/white-label/blob/master/src/core/domain/Entity.ts)を閲覧して、実装したけど
 使わなかったので、等価を削除しただけかな。
+
+from:takahiro
+> MemberAggregateやTaskAggregateは、継承はされているものの、単なるEntityであると理解しました。
+OK
+> すでに作成されているエンティティ（member、task）の属性からプリミティブ型が排除されていて、素晴らしいと思いました！
+:+1:
+> utils配下にaggregate-root.ts、entity.ts、value-objectなどが配置されていますが、責務的に domainフォルダ下に__shared__などのフォルダを作成し、同配下に配置するほうがより適切な気がしました！（utilsにいろいろな要素が集まりすぎている。。）
+
+utilsという名のゴミ箱みたいにはなっている。（意図としては,utilsで仮置きして、肥大化し始めたら各フォルダにいれようとしていた）
+
+> ドメイン層にinterface（domain/member/query-service.interface.ts）が配置されていますが、これはユースケース層に配置するべきでは？domain層の配置されるのは、リポジトリではないでしょうか？
+
+たしかに、そうだね。
+
+> usecase層を集約単位でフォルダを分けられていますが、仮に集約跨ぎのユースケースが発生した場合、どのような配置になりそうですか？
+
+あー、考えてなかった。でもリクエストごとのユースケースをつくるかなー
+
+> member.controller.tsでconstructor()時に各種ユースケースを生成していますが、各メソッド内で生成させたほうが適切ではないでしょうか？
+
+理解できてないので、ここ保留。
+
+> member.service.tsのserviceという名称は意味が広く、なんでも入れることができる呼称のため、実装が膨らみがちです。決して誤りではありませんが、member-update-email-serviceなど個別に切り分けたほうが良いかもしれません！
+
+たしかに、そう。
+
+> prismaのseedデータ投入が、スッキリ実装されていて素晴らしいと思いました！
+
+これは公式ドキュンメントを参考にした気がする。
